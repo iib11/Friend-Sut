@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">All Friend</string>
+    <string name="signup">สมัครสมาชิก</string>
+    <string name="signin">เข้าสู่ระบบ</string>
+</resources>
