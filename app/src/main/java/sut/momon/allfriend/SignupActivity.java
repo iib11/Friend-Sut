@@ -1,6 +1,9 @@
 package sut.momon.allfriend;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +17,7 @@ public class SignupActivity extends AppCompatActivity {
     //การประกาศตัวแปร
 
     private EditText nameEditText,addressEditText,phoneEditText,userEditText,passwordEditText;
-    private String nameString,addressString,phoneString,userString,passwordString,genderString,imageString;
+    private String nameString,addressString,phoneString,userString,passwordString,genderString,imageString,imagepathString,imageNameString;
     private RadioButton maleRadioButton,famaleRadioButton;
     private ImageView imageView;
 
@@ -54,12 +57,33 @@ public class SignupActivity extends AppCompatActivity {
 
             Log.d("SUTFriendV1","Result ==> Success");
 
+            //Find Path of Image
+
+            Uri uri = data.getData();
+            imagepathString = myFindPath(uri);
 
 
 
         }   //if
 
     }   // onActivityResult
+
+    private String myFindPath(Uri uri) {
+
+        String strResult = null;
+
+        String[] strings = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(uri,strings,null,null,null);
+
+        if () {
+
+        } else {
+
+        }
+
+
+        return strResult;
+    }
 
     public void clickSignUpSign(View view) {
 
