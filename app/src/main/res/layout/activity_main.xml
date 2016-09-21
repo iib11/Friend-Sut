@@ -7,12 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="sut.momon.allfriend.MainActivity">
+    tools:context="sut.momon.allfriend.MainActivity"
+    android:background="@drawable/wallpapers_a_04">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SUT Friend" />
+        android:text="SUT Friend"
+        android:textColor="@android:color/holo_green_light" />
 
     <LinearLayout
         android:orientation="horizontal"
