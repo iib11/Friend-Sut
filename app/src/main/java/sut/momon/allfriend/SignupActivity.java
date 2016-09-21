@@ -2,6 +2,8 @@ package sut.momon.allfriend;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -61,7 +63,18 @@ public class SignupActivity extends AppCompatActivity {
 
             Uri uri = data.getData();
             imagepathString = myFindPath(uri);
+            Log.d("SUTFriendV1","imagePathString ==> "+ imagepathString);
 
+            //Setup ImageView
+
+            try {
+
+                Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                imageView.setImageBitmap(bitmap);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
         }   //if
@@ -75,9 +88,15 @@ public class SignupActivity extends AppCompatActivity {
         String[] strings = {MediaStore.Images.Media.DATA};
         Cursor cursor = getContentResolver().query(uri,strings,null,null,null);
 
-        if () {
+        if (cursor != null) {
+
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            strResult = cursor.getString(index);
 
         } else {
+
+            strResult = uri.getPath();
 
         }
 
