@@ -5,38 +5,37 @@ import android.content.Context;
 import android.content.DialogInterface;
 
 /**
- * Created by momot on 21/9/2559.
+ * Created by masterUNG on 9/21/2016 AD.
  */
 public class MyAlert {
 
     //Explicit
     private Context context;
     private int anInt;
-    private String titleString,massageString;
+    private String titleString, messageString;
 
-    public MyAlert(Context context, int anInt, String titleString, String massageString) {
+    public MyAlert(Context context, int anInt, String titleString, String messageString) {
         this.context = context;
         this.anInt = anInt;
         this.titleString = titleString;
-        this.massageString = massageString;
+        this.messageString = messageString;
     }
 
     public void myDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setCancelable(false);//กดปุ่มกลับไม่ได้จนกว่าจะกดOK
+        builder.setCancelable(false);
         builder.setIcon(anInt);
         builder.setTitle(titleString);
-        builder.setMessage(massageString);
+        builder.setMessage(messageString);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
             }
         });
         builder.show();
 
-
     }
 
-}   //Main Class
+}   // Main Class

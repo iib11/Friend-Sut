@@ -12,7 +12,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.support.annotation.BoolRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -35,8 +34,11 @@ import java.io.File;
 public class SignupActivity extends AppCompatActivity {
 
     //Explicit การประกาศตัวแปร
-    private EditText nameEditText, addressEditText,phoneEditText, userEditText, passwordEditText;
-    private String nameString, addressString, phoneString,userString, passwordString, genderString, imageString,imagePathString, imageNameString;
+    private EditText nameEditText, addressEditText,
+            phoneEditText, userEditText, passwordEditText;
+    private String nameString, addressString, phoneString,
+            userString, passwordString, genderString, imageString,
+            imagePathString, imageNameString;
     private RadioButton maleRadioButton, femaleRadioButton;
     private ImageView imageView;
     private boolean statusABoolean = true;
@@ -83,7 +85,7 @@ public class SignupActivity extends AppCompatActivity {
                         genderString = "Male";
                         break;
                     case R.id.radioButton2:
-                        genderString = "Female";
+                        genderString = "Femail";
                         break;
                 }
 
@@ -227,7 +229,7 @@ public class SignupActivity extends AppCompatActivity {
 
         //Explicit
         private Context context;
-        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_user_master.php";
+        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_user_Bright.php";
 
         public SaveUserToServer(Context context) {
             this.context = context;
@@ -255,7 +257,7 @@ public class SignupActivity extends AppCompatActivity {
                 return response.body().string();
 
             } catch (Exception e) {
-                Log.d("SutFriend2", "e==>" + e.toString());
+                Log.d("SutFriendV2", "e==> " + e.toString());
                 return null;
             }
 
@@ -268,9 +270,12 @@ public class SignupActivity extends AppCompatActivity {
             Log.d("SutFriendV2", "Result ==> " + s);
 
             if (Boolean.parseBoolean(s)) {
-                Toast.makeText(context,"บันทึกข้อมูลเรียบร้อย",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "บันทึกข้อมูลเรียบร้อยแล้วคะ", Toast.LENGTH_SHORT).show();
+                finish();
             } else {
-                MyAlert myAlert = new MyAlert(context, R.drawable.rat48, "Error", "ไม่สามารถบันทึกได้");
+                MyAlert myAlert = new MyAlert(context, R.drawable.rat48,
+                        "Error", "ไม่สามารถบันทักได้");
+
             }
 
         }   // onPost
@@ -310,5 +315,6 @@ public class SignupActivity extends AppCompatActivity {
 
 
 }   // Main Class
+
 
 

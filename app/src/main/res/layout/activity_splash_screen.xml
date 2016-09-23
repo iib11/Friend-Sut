@@ -7,23 +7,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="sut.momon.allfriend.ServiceActivity"
+    tools:context="sut.momon.allfriend.SplashScreen"
     android:background="@android:color/holo_orange_dark">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView8"
-        android:textSize="@dimen/h1"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/aText" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/textView8"
-        android:layout_marginTop="20dp" />
+        android:id="@+id/imageView5"
+        android:src="@drawable/sut_logo"
+        android:layout_alignParentBottom="false"
+        android:layout_centerInParent="true"
+        android:background="#00000000" />
 </RelativeLayout>

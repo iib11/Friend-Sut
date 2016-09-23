@@ -2,6 +2,7 @@ package sut.momon.allfriend;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +36,19 @@ public class MainActivity extends AppCompatActivity {
 
     }   // Main Method
 
+    public void clickWebSite(View view) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://youtu.be/AFmWqLIqDZA"));
+        startActivity(intent);
+
+    }   // clickWebSite
+
     private class SynchronizeData extends AsyncTask<Void, Void, String> {
 
         //Explicit
         private Context context;
-        private static final String urlJSON = "http://swiftcodingthai.com/Sut/get_data_master.php";
+        private static final String urlJSON = "http://swiftcodingthai.com/Sut/get_data_Bright.php";
         private boolean statusABoolean = true;
         private String[] nameStrings, imageStrings, genderStrings, addressStrings,
                 phoneStrings, userStrings, passwordStrings;
@@ -87,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 userStrings = new String[jsonArray.length()];
                 passwordStrings = new String[jsonArray.length()];
 
-                for (int i = 0; i < jsonArray.length(); i += 1) {
+                for (int i=0; i<jsonArray.length();i+=1) {
 
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -107,27 +116,32 @@ public class MainActivity extends AppCompatActivity {
                         nameString = nameStrings[i];
 
                     }   // if
-
                 }   // for
 
                 if (statusABoolean) {
-                    MyAlert myAlert = new MyAlert(context, R.drawable.nobita48, "User False", "No" + userString + "in my Database");
-                } else if (!(passwordStrings.equals(truePasswordString))) {
-                    //Password False
-                    MyAlert myAlert = new MyAlert(context, R.drawable.rat48, "Password False", "Please Try Again Password False");
+                    MyAlert myAlert = new MyAlert(context, R.drawable.nobita48,
+                            "User False", "No " + userString + " in my Database");
+                    myAlert.myDialog();
+                } else if (!(passwordString.equals(truePasswordString))) {
+                    // Password False
+                    MyAlert myAlert = new MyAlert(context, R.drawable.rat48,
+                            "Password False", "Please Try Again Password False");
                     myAlert.myDialog();
                 } else {
-                    //Password True
-                    Toast.makeText(context, "Welcome" + nameString, Toast.LENGTH_SHORT).show();
+                    // Password True
+                    Toast.makeText(context, "Welcome " + nameString,
+                            Toast.LENGTH_SHORT).show();
 
                     //Intent to ServiceActivity
-                    Intent intent = new Intent(MainActivity.this,ServiceActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
                     intent.putExtra("Login", nameString);
                     intent.putExtra("Name", nameStrings);
                     intent.putExtra("Image", imageStrings);
                     intent.putExtra("Gender", genderStrings);
                     intent.putExtra("Address", addressStrings);
                     intent.putExtra("Phone", phoneStrings);
+                    startActivity(intent);
+                    finish();
 
                 }
 
@@ -150,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
         //Check Space
         if (userString.equals("") || passwordString.equals("")) {
             //Have Space
-            MyAlert myAlert = new MyAlert(this, R.drawable.doremon48,"Have Space", "Please Fill All Every Blank");
+            MyAlert myAlert = new MyAlert(this, R.drawable.doremon48,
+                    "Have Space", "Please Fill All Every Blank");
             myAlert.myDialog();
 
         } else {
