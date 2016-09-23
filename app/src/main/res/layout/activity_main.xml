@@ -8,13 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="sut.momon.allfriend.MainActivity"
-    android:background="@drawable/wallpapers_a_04">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SUT Friend"
-        android:textColor="@android:color/holo_green_light" />
+    android:background="@android:color/holo_orange_dark">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -27,7 +21,9 @@
             android:layout_height="wrap_content"
             android:text="@string/signin"
             android:id="@+id/button"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textSize="@dimen/h2"
+            android:onClick="clickSignIn" />
 
         <Button
             android:layout_width="match_parent"
@@ -35,6 +31,42 @@
             android:text="@string/signup"
             android:id="@+id/button2"
             android:layout_weight="1"
-            android:onClick="clickSignUpMain" />
+            android:onClick="clickSignUpMain"
+            android:textSize="@dimen/h2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/logohight"
+            android:id="@+id/imageView2"
+            android:src="@drawable/sut_logo" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText6"
+            android:layout_marginTop="20dp"
+            android:hint="User : "
+            android:textColor="@color/abc_tint_seek_thumb"
+            android:inputType="text"
+            android:textSize="@dimen/h2" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText7"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"
+            android:hint="Password : "
+            android:textSize="@dimen/h2" />
     </LinearLayout>
 </RelativeLayout>

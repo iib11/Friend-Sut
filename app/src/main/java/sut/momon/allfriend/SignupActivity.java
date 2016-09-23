@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.support.annotation.BoolRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -225,7 +227,7 @@ public class SignupActivity extends AppCompatActivity {
 
         //Explicit
         private Context context;
-        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_user_Bright.php";
+        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_user_master.php";
 
         public SaveUserToServer(Context context) {
             this.context = context;
@@ -253,6 +255,7 @@ public class SignupActivity extends AppCompatActivity {
                 return response.body().string();
 
             } catch (Exception e) {
+                Log.d("SutFriend2", "e==>" + e.toString());
                 return null;
             }
 
@@ -263,6 +266,12 @@ public class SignupActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             Log.d("SutFriendV2", "Result ==> " + s);
+
+            if (Boolean.parseBoolean(s)) {
+                Toast.makeText(context,"บันทึกข้อมูลเรียบร้อย",Toast.LENGTH_SHORT).show();
+            } else {
+                MyAlert myAlert = new MyAlert(context, R.drawable.rat48, "Error", "ไม่สามารถบันทึกได้");
+            }
 
         }   // onPost
 
